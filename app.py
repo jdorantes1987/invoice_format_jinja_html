@@ -1,6 +1,12 @@
 from jinja2 import Template
 import pdfkit
 
+# CUIT que emitio la factura
+#
+# Podes usar 20409378472 para desarrollo
+# sin necesidad de key o cert
+# Para mas info https://docs.afipsdk.com/paso-a-paso/instalacion
+
 html = open("C:/Users/jdorantes/PycharmProjects/invoice_format_jinja_html/templates/invoice.html").read()
 
 # Datos de la empresa
@@ -72,4 +78,14 @@ template_html = template.render(
     overall= overall
 )
 
-res = pdfkit.from_string(template_html, 'invoice.pdf')
+options = {
+    'page-size': 'Letter',
+    'margin-top': '0.75in',
+    'margin-right': '0.75in',
+    'margin-bottom': '0.75in',
+    'margin-left': '0.75in',
+    'encoding': "UTF-8",
+    'no-outline': None
+}
+
+pdfkit.from_string(template_html, 'invoice.pdf', options=options)
