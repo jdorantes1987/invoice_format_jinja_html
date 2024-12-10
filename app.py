@@ -9,22 +9,24 @@ from jinja2 import Template
 # sin necesidad de key o cert
 # Para mas info https://docs.afipsdk.com/paso-a-paso/instalacion
 
-html = open("C:/Users/jdorantes/PycharmProjects/invoice_format_jinja_html/templates/invoice.html").read()
+html = open("C:/Users/jdorantes/PycharmProjects/invoice_format_jinja_html/templates/invoice.html", encoding='utf-8').read()
 
 # Datos de la empresa
 business_data = {
-	'business_name': 'María Pérez.', # Nombre / Razon social
-	'address': 'Mi dirección', # Direccion
+    'codigo_ruta' : '088',
+	'nombre_ruta': 'JOSEPH ALEXANDER QUINTERO CARRASQUEL', # Nombre / Razon social
+	'direccion': 'Mi dirección', # Direccion
 	'tax_id': '+58 4143893828', # CUIL/CUIT
 	'gross_income_id': 12345432, # Ingresos brutos
 	'start_date': '25/10/2017', # Fecha inicio de actividades
+	'usuario': 'jdorantes', # Fecha inicio de actividades
 	'vat_condition': 'Responsable inscripto' # Condicion frente al IVA
 }
 
 # Datos del comprobante
 bill = {
 	'number': '000000032', # Numero de comprobante
-	'point_of_sale': '0001', # Numero del punto de venta
+	'point_of_sale': 'jdorantes', # Numero del punto de venta
 	'date': '25/10/2017', # Fecha de emision del comprobante
 	'since': '25/10/2017', # Fecha de comienzo
 	'until': '25/10/2017', # Fecha de fin
@@ -40,7 +42,7 @@ bill = {
 items = [
 	{
 		'code': '321', # Codigo
-		'name': 'Cafe Americano', # Nombre
+		'name': 'Café Americano', # Nombre
 		'quantity': '1,00', # Cantidad
 		'measurement_unit': 'Unidad', # Unidad de medida
 		'price': '1500,00', # Precio
@@ -53,7 +55,7 @@ items = [
 
 # Datos de a quien va emitido del comprobante
 billing_data = {
-	'tax_id': 12345678912, # Document/CUIT/CUIL
+	'tax_id': '158.647,00', # Document/CUIT/CUIL
 	'name': 'Pepe perez', # Nombre / Razon social
 	'vat_condition': 'Consumidor final', # Condicion frente al iva
 	'address': 'Calle falsa 123', # Direccion
