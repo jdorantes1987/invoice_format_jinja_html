@@ -1,5 +1,7 @@
+import os
+import webbrowser 
+
 from jinja2 import Template
-import pdfkit
 
 # CUIT que emitio la factura
 #
@@ -11,9 +13,9 @@ html = open("C:/Users/jdorantes/PycharmProjects/invoice_format_jinja_html/templa
 
 # Datos de la empresa
 business_data = {
-	'business_name': 'Empresa imaginaria S.A.', # Nombre / Razon social
-	'address': 'Calle falsa 123', # Direccion
-	'tax_id': 12345678912, # CUIL/CUIT
+	'business_name': 'María Pérez.', # Nombre / Razon social
+	'address': 'Mi dirección', # Direccion
+	'tax_id': '+58 4143893828', # CUIL/CUIT
 	'gross_income_id': 12345432, # Ingresos brutos
 	'start_date': '25/10/2017', # Fecha inicio de actividades
 	'vat_condition': 'Responsable inscripto' # Condicion frente al IVA
@@ -78,14 +80,10 @@ template_html = template.render(
     overall= overall
 )
 
-options = {
-    'page-size': 'Letter',
-    'margin-top': '0.75in',
-    'margin-right': '0.75in',
-    'margin-bottom': '0.75in',
-    'margin-left': '0.75in',
-    'encoding': "UTF-8",
-    'no-outline': None
-}
+filename = os.getcwd() + '/' + 'files/PDF/edo_cta.html'
 
-pdfkit.from_string(template_html, 'invoice.pdf', options=options)
+with open(filename, 'w', encoding='utf-8') as f:
+    f.write(template_html)
+    f.close
+
+rdFile = webbrowser.open(filename)  #Full path to your file
