@@ -9,7 +9,7 @@ from jinja2 import Template
 # sin necesidad de key o cert
 # Para mas info https://docs.afipsdk.com/paso-a-paso/instalacion
 
-html = open("C:/Users/jdorantes/PycharmProjects/invoice_format_jinja_html/templates/invoice.html").read()
+html = open(r"templates\invoice.html").read()
 
 # Datos de la empresa
 business_data = {
